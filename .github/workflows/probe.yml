@@ -1,0 +1,25 @@
+name: photogrammetry-probe
+
+# Run manually from the Actions tab.
+on:
+  workflow_dispatch:
+
+jobs:
+  probe:
+    # macos-15 is Apple silicon (arm64). macos-13 is Intel — do not use it.
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Confirm we are actually on Apple silicon
+        run: |
+          uname -m
+          sysctl -n machdep.cpu.brand_string || true
+          sw_vers
+          xcodebuild -version
+
+      - name: Build probe
+        run: swiftc -O -o probe probe.swift
+
+      - name: Run probe
+        run: ./probe
