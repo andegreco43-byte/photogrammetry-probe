@@ -2,7 +2,10 @@
 # drive_batch.sh — reconstruct every capture folder in a Google Drive directory
 # and write each resulting .usdz back INTO its own source folder.
 #
-#   ./drive_batch.sh [detail]
+#   ./drive_batch.sh "<drive path>" [detail]
+#
+# Example:
+#   ./drive_batch.sh "R01 Lymphedema Project/Mouse Tail Volumes/Batch2Captures" full
 #
 # Requires: rclone configured with a remote named "gdrive" (rclone config),
 #           and ./photogrammetry already built.
@@ -12,12 +15,10 @@
 
 set -u
 
-DETAIL="${1:-full}"
+DRIVE_PATH="${1:?usage: ./drive_batch.sh \"<drive path>\" [detail]}"
+DETAIL="${2:-full}"
 
-# --- edit this if your Drive layout changes ---------------------------------
 REMOTE="gdrive"
-DRIVE_PATH="R01 Lymphedema Project/Mouse Tail Volumes/MouseTailCaptures"
-# ----------------------------------------------------------------------------
 
 SRC="$REMOTE:$DRIVE_PATH"
 WORK="$HOME/scratch/work"
