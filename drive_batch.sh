@@ -19,6 +19,7 @@ DRIVE_PATH="${1:?usage: ./drive_batch.sh \"<drive path>\" [detail]}"
 DETAIL="${2:-full}"
 
 REMOTE="gdrive"
+export PATH="$HOME/bin:$PATH"
 
 SRC="$REMOTE:$DRIVE_PATH"
 WORK="$HOME/scratch/work"
