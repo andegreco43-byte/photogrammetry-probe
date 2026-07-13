@@ -87,7 +87,7 @@ echo
 echo "[4/5] PhotogrammetrySession"
 if swiftc -O -o /tmp/probe probe.swift 2>/dev/null; then
   PROBE=$(/tmp/probe 2>/dev/null)
-  if echo "$PROBE" | grep -q "isSupported: true"; then
+  if echo "$PROBE" | grep -qE "isSupported[[:space:]]*:[[:space:]]*true"; then
     ok "isSupported: true"
   else
     bad "isSupported is FALSE on this host. Do NOT reconstruct here."
