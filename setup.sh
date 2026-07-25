@@ -151,6 +151,6 @@ echo
 echo "=================================================="
 echo " Ready. Provenance: ~/scratch/SESSION_PROVENANCE.txt"
 echo
-echo " Reconstruct a Drive folder:"
-echo "   ./drive_batch.sh \"R01 Lymphedema Project/Mouse Tail Volumes/Captures/Captures\" full"
+echo " Reconstruct a Drive folder (point at the timepoint folder holding the 5 runs):"
+echo "   ./drive_batch.sh \"R01 Lymphedema Project/Mouse Tail Volumes/MouseTailCaptures/<DATE FOLDER>\" full"
 echo "=================================================="
