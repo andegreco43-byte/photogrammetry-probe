@@ -42,7 +42,7 @@ mkdir -p "$WORK"
   echo "capture,status,detail,elapsed_sec,invalid,skipped,downsampled,finished_utc" > "$MANIFEST"
 
 # Folder names may contain spaces — read them line by line, never word-split.
-rclone lsf "$SRC" --dirs-only | sed 's#/$##' > /tmp/_folders.txt
+rclone lsf "$SRC" --dirs-only | sed 's#/$##' | grep -v '^Mouse' > /tmp/_folders.txt
 echo "Found $(wc -l < /tmp/_folders.txt) folders."
 echo
 
